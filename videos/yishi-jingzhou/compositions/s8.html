@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s8" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-east" data-start="0.05" data-duration="29.3" data-track-index="0">
+          <div style="position:absolute; left:330px; top:110px;">
+            <svg viewBox="0 0 900 620" width="1180" height="813">
+              <g id="e-m1" fill="#A89F8D" opacity="0">
+                <path d="M560 120 l36 -66 36 66 z"/><path d="M640 200 l34 -60 34 60 z"/><path d="M700 300 l36 -64 36 64 z"/><path d="M720 420 l32 -58 32 58 z"/>
+                <text x="600" y="80" fill="#9A927F" font-size="34" font-weight="900">大别山脉</text>
+              </g>
+              <g id="e-m2" fill="#A89F8D" opacity="0">
+                <path d="M560 500 l36 -66 36 66 z"/><path d="M650 560 l34 -60 34 60 z"/>
+                <text x="590" y="612" fill="#9A927F" font-size="34" font-weight="900">罗霄山脉</text>
+              </g>
+              <path id="e-river-wide" d="M60 300 q180 -60 360 -30 q160 26 300 22" fill="none" stroke="#3E7C8F" stroke-width="70" stroke-linecap="round" opacity="0.9"/>
+              <path id="e-river-narrow" d="M60 300 q180 -60 360 -30 q160 26 300 22" fill="none" stroke="#3E7C8F" stroke-width="14" stroke-linecap="round" opacity="0"/>
+              <circle cx="836" cy="286" r="12" fill="#D4A853"/>
+              <text x="836" y="248" text-anchor="middle" fill="#D4A853" font-size="32" font-weight="900">九江</text>
+            </svg>
+          </div>
+          <div id="e-label" style="position:absolute; left:0; right:0; top:190px; text-align:center; opacity:0;">
+            <span class="gold" style="font-size:110px; font-weight:900; letter-spacing:0.12em;">两山夹一江</span>
+            <div id="e-narrow" style="margin-top:14px;"><span class="dim" style="font-size:44px; font-weight:700;">江面瞬间收窄——天然的好防线</span></div>
+          </div>
+          <div id="e-cities" style="position:absolute; left:0; right:0; top:845px; text-align:center; opacity:0;">
+            <span class="dim" style="font-size:38px; font-weight:700;">今：九江 · 黄冈 · 黄陂一带</span>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="29.5" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#c-east", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.2);
+        tl.fromTo("#e-river-wide", { opacity: 0 }, { opacity: 0.9, duration: 0.6, ease: "power1.out" }, 0.08);
+        tl.fromTo("#e-m1", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.6);
+        tl.fromTo("#e-m2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 2.0);
+        tl.to("#e-river-wide", { attr: { "stroke-dashoffset": 900 }, strokeDasharray: 900, duration: 2.2, ease: "power1.inOut" }, 4.4);
+        tl.fromTo("#e-river-narrow", { attr: { "stroke-dashoffset": 900 }, strokeDasharray: 900, opacity: 0 }, { attr: { "stroke-dashoffset": 0 }, opacity: 1, duration: 1.6, ease: "power2.inOut" }, 8.7);
+        tl.to("#e-river-wide", { opacity: 0.12, duration: 0.6, ease: "power1.inOut" }, 8.7);
+        tl.fromTo("#e-label", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 10.0);
+        tl.fromTo("#e-cities", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 12.9);
+        tl.to("#e-label", { scale: 1.05, duration: 0.4, ease: "power2.out" }, 13.8);
+        tl.to("#e-label", { scale: 1, duration: 0.4, ease: "power2.inOut" }, 14.2);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 29.5, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 29.5, ease: "none" }, 0);
+        window.__timelines["s8"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

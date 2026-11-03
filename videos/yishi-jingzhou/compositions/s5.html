@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s5" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-ny" data-start="0.2" data-duration="21.6" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+            <div id="ny-t" class="big" style="font-size:92px;">还有一个容易被忘掉的地方——<span class="gold">南阳</span></div>
+            <div id="ny-sub" style="opacity:0;"><span style="color:#E8DCC0; font-size:42px; font-weight:700;">要完成</span><span class="gold" style="font-size:50px; font-weight:900;">隆中对</span><span style="color:#E8DCC0; font-size:42px; font-weight:700;">，不光是襄阳，还要有南阳</span></div>
+            <svg viewBox="0 0 900 240" width="840" height="224" id="ny-map" style="opacity:0;">
+              <circle cx="450" cy="70" r="16" fill="#D4A853"/><text x="450" y="40" text-anchor="middle" fill="#D4A853" font-size="38" font-weight="900">南阳</text>
+              <circle cx="450" cy="190" r="16" fill="#E8DCC0"/><text x="450" y="232" text-anchor="middle" fill="#E8DCC0" font-size="38" font-weight="700">襄阳</text>
+              <line id="ny-link" x1="450" y1="86" x2="450" y2="174" stroke="#9A927F" stroke-width="5"/>
+              <text x="530" y="138" fill="#9A927F" font-size="30">在襄阳北边</text>
+            </svg>
+            <div id="chu-card" style="opacity:0; padding:14px 40px; border:2px solid rgba(192,58,43,0.65); border-radius:14px; color:#E8DCC0; font-size:38px; font-weight:700;">楚国，春秋大国，<span class="red" style="font-weight:900;">春秋五霸之一</span></div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="21.8" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#ny-t", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.2);
+        tl.fromTo("#ny-sub", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 7.0);
+        tl.fromTo("#ny-map", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 9.2);
+        tl.fromTo("#ny-link", { attr: { "stroke-dashoffset": 90 }, strokeDasharray: 90 }, { attr: { "stroke-dashoffset": 0 }, duration: 0.6, ease: "power2.inOut" }, 9.9);
+        tl.fromTo("#chu-card", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 14.6);
+        tl.to("#chu-card", { scale: 1.04, duration: 0.3, ease: "power2.out" }, 17.5);
+        tl.to("#chu-card", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 17.8);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 21.8, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 21.8, ease: "none" }, 0);
+        window.__timelines["s5"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

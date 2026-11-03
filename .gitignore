@@ -82,3 +82,4 @@ htmlcov/
 videos/*/renders/
 videos/*/.hyperframes/
 records/*.m4a
+records/*.mp4

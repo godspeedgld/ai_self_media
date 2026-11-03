@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s10" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-list" data-start="0.3" data-duration="13.3" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:44px;">
+            <div id="l-t" class="big" style="font-size:76px; font-weight:900;">要守住荆州，就要守住——</div>
+            <div style="display:flex; gap:90px;">
+              <div style="display:flex; flex-direction:column; gap:24px; align-items:center;">
+                <div id="l-n" class="gold" style="font-size:56px; font-weight:900;">北</div>
+                <div id="l-n1" style="opacity:0; padding:16px 46px; border:2px solid rgba(212,168,83,0.55); border-radius:12px; color:#E8DCC0; font-size:44px; font-weight:700;">襄阳</div>
+                <div id="l-n2" style="opacity:0; padding:16px 46px; border:2px solid rgba(212,168,83,0.55); border-radius:12px; color:#E8DCC0; font-size:44px; font-weight:700;">南阳</div>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:24px; align-items:center;">
+                <div id="l-e" class="gold" style="font-size:56px; font-weight:900;">东</div>
+                <div id="l-e1" style="opacity:0; padding:16px 46px; border:2px solid rgba(62,124,143,0.7); border-radius:12px; color:#E8DCC0; font-size:44px; font-weight:700;">九江（柴桑）</div>
+                <div id="l-e2" style="opacity:0; padding:16px 46px; border:2px solid rgba(62,124,143,0.7); border-radius:12px; color:#E8DCC0; font-size:44px; font-weight:700;">大别山脉</div>
+                <div id="l-e3" style="opacity:0; padding:16px 46px; border:2px solid rgba(62,124,143,0.7); border-radius:12px; color:#E8DCC0; font-size:44px; font-weight:700;">罗霄山脉</div>
+              </div>
+            </div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="13.6" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#l-t", { opacity: 0, y: -26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+        tl.fromTo("#l-n", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 1.6);
+        tl.fromTo("#l-e", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 1.9);
+        [["#l-n1", 2.3], ["#l-n2", 2.9]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, at);
+        });
+        [["#l-e1", 3.6], ["#l-e2", 4.2], ["#l-e3", 4.8]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, at);
+        });
+        tl.to("#l-t", { scale: 1.04, duration: 0.3, ease: "power2.out" }, 9.0);
+        tl.to("#l-t", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 9.3);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 13.6, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 13.6, ease: "none" }, 0);
+        window.__timelines["s10"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

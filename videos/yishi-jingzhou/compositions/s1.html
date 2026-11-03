@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-title" data-start="0" data-duration="15.1" data-track-index="0">
+          <div id="g-title" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div id="t1" class="big" style="font-size:150px; letter-spacing:0.08em;">大意失<span class="gold">荆州</span></div>
+            <div id="t2" class="red" style="font-size:96px; font-weight:900; margin-top:10px; opacity:0;">真的是大意的吗？</div>
+          </div>
+        </div>
+        <div class="clip" id="c-cards" data-start="6.2" data-duration="8.9" data-track-index="1">
+          <div style="position:absolute; left:0; right:0; top:790px; display:flex; justify-content:center; gap:34px;">
+            <div id="k1" style="opacity:0; padding:20px 38px; border:2px solid rgba(212,168,83,0.5); border-radius:14px; color:#E8DCC0; font-size:38px; font-weight:700;">三国演义说：可惜啦</div>
+            <div id="k2" style="opacity:0; padding:20px 38px; border:2px solid rgba(212,168,83,0.5); border-radius:14px; color:#E8DCC0; font-size:38px; font-weight:700;">关羽一时大意</div>
+            <div id="k3" style="opacity:0; padding:20px 38px; border:2px solid rgba(192,58,43,0.7); border-radius:14px; color:#E8DCC0; font-size:38px; font-weight:700;">就怪糜芳？</div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="15.1" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#t1", { opacity: 0.25, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power4.out" }, 0);
+        tl.fromTo("#t2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.5);
+        tl.to("#t1", { scale: 0.82, duration: 0.6, ease: "power2.inOut" }, 2.6);
+        [["#k1", 6.2], ["#k2", 9.0], ["#k3", 12.2]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, at);
+        });
+        tl.to("#k3", { scale: 1.08, duration: 0.25, ease: "power2.out" }, 13.6);
+        tl.to("#k3", { scale: 1, duration: 0.25, ease: "power2.inOut" }, 13.85);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 15.1, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 15.1, ease: "none" }, 0);
+        window.__timelines["s1"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

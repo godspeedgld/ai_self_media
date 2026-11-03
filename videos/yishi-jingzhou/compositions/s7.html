@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s7" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-sum" data-start="0.3" data-duration="11.8" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:40px;">
+            <div id="s7-t" class="dim" style="font-size:52px; font-weight:700;">对江汉平原来说，北边有两个关键点</div>
+            <div style="display:flex; gap:70px;">
+              <div id="s7-xym" style="opacity:0; padding:26px 70px; border:3px solid #D4A853; border-radius:18px; color:#D4A853; font-size:72px; font-weight:900;">① 襄阳</div>
+              <div id="s7-ny" style="opacity:0; padding:26px 70px; border:3px solid rgba(212,168,83,0.55); border-radius:18px; color:#D4A853; font-size:72px; font-weight:900;">② 南阳</div>
+            </div>
+            <div id="s7-floor" style="opacity:0;"><span class="dim" style="font-size:48px; font-weight:700;">但底线是——</span><span class="big" style="font-size:64px; font-weight:900;">至少要有襄阳</span></div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="12.1" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#s7-t", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 0.4);
+        tl.fromTo("#s7-xym", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.6)" }, 2.6);
+        tl.fromTo("#s7-ny", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "back.out(1.6)" }, 3.0);
+        tl.fromTo("#s7-floor", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 7.9);
+        tl.to("#s7-ny", { opacity: 0.35, duration: 0.5, ease: "power1.inOut" }, 8.3);
+        tl.to("#s7-xym", { scale: 1.06, duration: 0.3, ease: "power2.out" }, 8.3);
+        tl.to("#s7-xym", { scale: 1, duration: 0.3, ease: "power2.inOut" }, 8.6);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 12.1, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 12.1, ease: "none" }, 0);
+        window.__timelines["s7"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s14" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-fin" data-start="0.3" data-duration="21.1" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:56px;">
+            <div id="f-t" class="dim" style="font-size:54px; font-weight:700;">守住荆州，最重要的不是军事能力——</div>
+            <div style="display:flex; gap:80px;">
+              <div id="f-c1" style="padding:34px 60px; border:3px solid rgba(212,168,83,0.6); border-radius:18px; text-align:center; opacity:0;">
+                <div class="gold" style="font-size:52px; font-weight:900;">长袖善舞的<br/>政治与外交</div>
+                <div class="red" style="font-size:44px; font-weight:900; margin-top:14px;">关羽 ✗</div>
+              </div>
+              <div id="f-c2" style="padding:34px 60px; border:3px solid rgba(154,146,127,0.5); border-radius:18px; text-align:center; opacity:0;">
+                <div class="dim" style="font-size:52px; font-weight:900;">军事能力</div>
+                <div class="gold" style="font-size:44px; font-weight:900; margin-top:14px;">关羽 ✓✓✓</div>
+              </div>
+            </div>
+            <div id="f-line" class="big" style="font-size:66px; font-weight:900; opacity:0;">守荆州的人选，<span class="red">从一开始或许就不是很好的选择</span></div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="21.4" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#f-t", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.4);
+        tl.fromTo("#f-c2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 2.2);
+        tl.fromTo("#f-c1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 5.1);
+        tl.to("#f-c1", { borderColor: "#C03A2B", duration: 0.4, ease: "power1.inOut" }, 10.1);
+        tl.fromTo("#f-line", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 18.3);
+        tl.to("#f-t", { opacity: 0.4, duration: 0.5, ease: "power1.inOut" }, 18.3);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 21.4, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 21.4, ease: "none" }, 0);
+        window.__timelines["s14"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

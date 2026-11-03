@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s4" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-gate" data-start="0.2" data-duration="8.2" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:90px;">
+            <svg viewBox="0 0 260 320" width="330" height="406" id="gate-svg">
+              <rect x="30" y="60" width="200" height="240" rx="18" fill="rgba(232,220,192,0.06)" stroke="rgba(212,168,83,0.4)" stroke-width="3"/>
+              <g id="gate-door">
+                <rect x="105" y="150" width="50" height="150" rx="8" fill="#D4A853" opacity="0.9"/>
+                <circle cx="118" cy="230" r="5" fill="#14120F"/>
+              </g>
+              <text x="130" y="110" text-anchor="middle" fill="#E8DCC0" font-size="44" font-weight="900">襄阳</text>
+            </svg>
+            <div style="display:flex; flex-direction:column; gap:26px; align-items:flex-start;">
+              <div id="s4-portal" class="big" style="font-size:96px;">襄阳 = <span class="gold">江汉平原的门户</span></div>
+              <div id="s4-drop" style="opacity:0;"><span class="dim" style="font-size:46px; font-weight:700;">门户一丢，</span><span class="red" style="font-size:56px; font-weight:900;">门户洞开</span></div>
+            </div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="8.4" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#gate-svg", { opacity: 0, x: -80 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0.2);
+        tl.fromTo("#s4-portal", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+        tl.fromTo("#gate-door", { rotation: 0, transformOrigin: "105px 150px" }, { rotation: -70, duration: 0.9, ease: "power2.in" }, 5.0);
+        tl.fromTo("#s4-drop", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 5.6);
+        tl.to("#gate-svg", { opacity: 0.55, duration: 0.6, ease: "power1.inOut" }, 6.4);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 8.4, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 8.4, ease: "none" }, 0);
+        window.__timelines["s4"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s9" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-38" data-start="0.1" data-duration="30.4" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; gap:40px;">
+            <div id="w-year" style="display:flex; align-items:baseline; gap:26px;">
+              <span class="red" style="font-size:120px; font-weight:900;">1938</span>
+              <span class="big" style="font-size:72px; font-weight:900;">武汉会战</span>
+            </div>
+            <div id="w-blocks" style="display:flex; gap:26px; margin-top:6px;">
+              <div id="w-b1" style="opacity:0; width:150px; height:20px; background:#C03A2B; border-radius:6px;"></div>
+              <div id="w-b2" style="opacity:0; width:150px; height:20px; background:#C03A2B; border-radius:6px;"></div>
+              <div id="w-b3" style="opacity:0; width:150px; height:20px; background:#C03A2B; border-radius:6px;"></div>
+            </div>
+            <div id="w-caption" class="dim" style="font-size:44px; font-weight:700; opacity:0;">两山夹一江，层层阻击</div>
+            <div style="display:flex; gap:80px; align-items:center; margin-top:10px;">
+              <div id="w-lose" style="opacity:0; padding:16px 40px; border:3px solid #C03A2B; border-radius:14px; color:#C03A2B; font-size:54px; font-weight:900;">会战失利</div>
+              <div id="w-but" class="dim" style="font-size:50px; font-weight:900; opacity:0;">但是——</div>
+              <div id="w-cost" style="opacity:0; padding:16px 40px; border:3px solid #D4A853; border-radius:14px; color:#D4A853; font-size:54px; font-weight:900;">大大消耗了日军</div>
+            </div>
+            <div id="w-after" class="dim" style="font-size:42px; font-weight:700; opacity:0;">此后日军再打长沙、常德、宜昌，都变得非常吃力</div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="30.8" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#w-year", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+        [["#w-b1", 6.3], ["#w-b2", 7.3], ["#w-b3", 8.3]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, scaleX: 0.2 }, { opacity: 1, scaleX: 1, duration: 0.35, ease: "power2.out" }, at);
+        });
+        tl.fromTo("#w-caption", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, 6.6);
+        tl.fromTo("#w-lose", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 14.4);
+        tl.fromTo("#w-but", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 16.2);
+        tl.fromTo("#w-cost", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 16.9);
+        tl.fromTo("#w-after", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 22.3);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 30.8, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 30.8, ease: "none" }, 0);
+        window.__timelines["s9"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

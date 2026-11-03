@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s12" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-meat" data-start="0.2" data-duration="12.1" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:60px;">
+            <svg viewBox="0 0 1100 300" width="1210" height="330" id="meat-svg">
+              <rect x="180" y="180" width="740" height="70" rx="16" fill="rgba(154,146,127,0.22)" stroke="rgba(154,146,127,0.5)" stroke-width="3"/>
+              <g id="meat-block">
+                <rect x="460" y="90" width="180" height="110" rx="20" fill="#C03A2B" opacity="0.85"/>
+                <text x="550" y="160" text-anchor="middle" fill="#E8DCC0" font-size="42" font-weight="900">荆州</text>
+              </g>
+              <g id="knife" opacity="0">
+                <rect x="180" y="60" width="190" height="52" rx="10" fill="#E8DCC0" opacity="0.9"/>
+                <rect x="130" y="72" width="60" height="26" rx="8" fill="#A89F8D"/>
+                <text x="270" y="50" text-anchor="middle" fill="#C03A2B" font-size="34" font-weight="900">曹操·刀</text>
+              </g>
+              <g id="fork" opacity="0">
+                <line x1="920" y1="70" x2="800" y2="120" stroke="#E8DCC0" stroke-width="12" stroke-linecap="round"/>
+                <line x1="800" y1="120" x2="772" y2="92" stroke="#E8DCC0" stroke-width="7" stroke-linecap="round"/>
+                <line x1="800" y1="120" x2="786" y2="86" stroke="#E8DCC0" stroke-width="7" stroke-linecap="round"/>
+                <line x1="800" y1="120" x2="802" y2="88" stroke="#E8DCC0" stroke-width="7" stroke-linecap="round"/>
+                <text x="948" y="58" text-anchor="middle" fill="#6FB4C8" font-size="34" font-weight="900">孙权·叉</text>
+              </g>
+            </svg>
+            <div id="meat-line" class="big" style="font-size:78px; font-weight:900; opacity:0;">想什么时候吃，就什么时候吃</div>
+          </div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="12.3" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#meat-svg", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, 0.2);
+        tl.fromTo("#meat-block", { scale: 0.7, transformOrigin: "550px 145px" }, { scale: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.3);
+        tl.fromTo("#knife", { opacity: 0, x: -180 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 3.3);
+        tl.fromTo("#fork", { opacity: 0, x: 180 }, { opacity: 1, x: 0, duration: 0.6, ease: "power3.out" }, 6.3);
+        tl.to("#knife", { rotation: 6, transformOrigin: "275px 86px", duration: 0.4, ease: "sine.inOut" }, 8.3);
+        tl.to("#knife", { rotation: 0, duration: 0.4, ease: "sine.inOut" }, 8.7);
+        tl.to("#fork", { rotation: -6, transformOrigin: "934px 95px", duration: 0.4, ease: "sine.inOut" }, 8.9);
+        tl.to("#fork", { rotation: 0, duration: 0.4, ease: "sine.inOut" }, 9.3);
+        tl.fromTo("#meat-line", { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 9.2);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 12.3, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 12.3, ease: "none" }, 0);
+        window.__timelines["s12"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

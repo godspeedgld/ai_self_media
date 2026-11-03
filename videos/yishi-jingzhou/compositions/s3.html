@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #14120F; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(212,168,83,0.28); pointer-events: none; }
+  .ink1 { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(212,168,83,0.05), transparent 65%); left: -200px; top: -250px; }
+  .ink2 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(154,146,127,0.05), transparent 65%); right: -300px; bottom: -350px; }
+  .big { color: #E8DCC0; font-weight: 900; }
+  .gold { color: #D4A853; }
+  .red { color: #C03A2B; }
+  .dim { color: #9A927F; }
+</style>
+      <div id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+
+        <div class="clip" id="c-map" data-start="0.05" data-duration="11.6" data-track-index="0">
+          <div id="g-map" style="position:absolute; left:370px; top:100px;">
+            
+  <svg viewBox="0 0 900 640" width="1180" height="840" id="map">
+    <rect x="170" y="150" width="560" height="360" rx="40" fill="rgba(232,220,192,0.07)" stroke="rgba(212,168,83,0.35)" stroke-width="2"/>
+    <text x="450" y="345" text-anchor="middle" fill="#E8DCC0" font-size="40" font-weight="700" id="m-plain">江汉平原</text>
+    <g id="m-w" fill="#A89F8D"><path d="M120 240 l34 -60 34 60 z"/><path d="M96 320 l30 -52 30 52 z"/><path d="M132 400 l32 -56 32 56 z"/></g>
+    <g id="m-s" fill="#A89F8D"><path d="M300 585 l32 -56 32 56 z"/><path d="M420 590 l30 -52 30 52 z"/><path d="M540 585 l32 -56 32 56 z"/></g>
+    <path id="m-river" d="M60 620 q160 -26 340 -12 q210 16 460 6" fill="none" stroke="#3E7C8F" stroke-width="8" stroke-linecap="round"/>
+    <g id="m-n"><rect x="330" y="118" width="240" height="26" rx="13" fill="#D4A853" opacity="0"/><circle cx="450" cy="131" r="11" fill="#D4A853"/></g>
+    <g id="m-e"><rect x="716" y="230" width="26" height="200" rx="13" fill="#D4A853" opacity="0"/><circle cx="729" cy="330" r="11" fill="#D4A853"/></g>
+  </svg>
+          </div>
+        </div>
+        <div class="clip" id="c-lbl" data-start="0.5" data-duration="11.3" data-track-index="1">
+          <div id="lb-w" class="dim" style="position:absolute; left:265px; top:400px; font-size:44px; font-weight:900; opacity:0;">西·山</div>
+          <div id="lb-ss" class="dim" style="position:absolute; left:810px; top:795px; font-size:44px; font-weight:900; opacity:0;">南·山</div>
+          <div id="lb-r" style="position:absolute; left:1130px; top:820px; font-size:44px; font-weight:900; color:#3E7C8F; opacity:0;">南·江</div>
+          <div id="lb-n" class="gold" style="position:absolute; left:760px; top:150px; font-size:52px; font-weight:900; opacity:0;">北 ← 要守</div>
+          <div id="lb-e" class="gold" style="position:absolute; left:1440px; top:430px; font-size:52px; font-weight:900; opacity:0;">东 ← 要守</div>
+        </div><div class="clip" id="AMB" data-start="0" data-duration="11.8" data-track-index="9" data-layout-ignore>
+          <div class="ink1" id="b1"></div>
+          <div class="ink2" id="b2"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#g-map", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.05);
+        tl.fromTo("#lb-w", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 0.5);
+        tl.fromTo("#lb-ss", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 2.4);
+        tl.fromTo("#m-river", { attr: { "stroke-dashoffset": 900 }, strokeDasharray: 900 }, { attr: { "stroke-dashoffset": 0 }, duration: 1.2, ease: "power2.inOut" }, 4.0);
+        tl.fromTo("#lb-r", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "power2.out" }, 4.4);
+        tl.fromTo("#lb-n", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, 7.9);
+        tl.fromTo("#lb-e", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.8)" }, 8.3);
+        tl.to("#m-n rect", { opacity: 1, duration: 0.35, ease: "power1.out" }, 7.9);
+        tl.to("#m-e rect", { opacity: 1, duration: 0.35, ease: "power1.out" }, 8.3);
+        tl.to("#m-plain", { opacity: 0.5, duration: 0.5, ease: "power1.inOut" }, 8.0);
+
+        tl.fromTo("#b1", { x: 0, y: 0 }, { x: 120, y: 60, duration: 11.8, ease: "none" }, 0);
+        tl.fromTo("#b2", { x: 0, y: 0 }, { x: -140, y: -70, duration: 11.8, ease: "none" }, 0);
+        window.__timelines["s3"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
