@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #061523; }
+        #s6-tank { position: absolute; left: 170px; top: 200px; width: 640px; height: 560px; border: 6px solid rgba(160,215,235,0.75); border-radius: 24px; background: rgba(20,60,90,0.35); overflow: hidden; }
+        #s6-water { position: absolute; left: 0; right: 0; top: 70px; bottom: 0; background: rgba(24,90,130,0.55); }
+        #s6-surface { position: absolute; left: 0; right: 0; top: 68px; height: 5px; background: rgba(120,210,235,0.9); }
+        #s6-fish { position: absolute; left: 240px; top: 330px; width: 150px; height: 75px; }
+        .s6-pellet { position: absolute; width: 16px; height: 16px; border-radius: 50%; background: #FFB454; }
+        #s6-feedlabel { position: absolute; left: 860px; top: 240px; color: #FFB454; font-size: 46px; font-weight: 700; opacity: 0; }
+        #s6-chip { position: absolute; left: 1200px; top: 330px; padding: 18px 44px; border-radius: 999px; border: 3px solid rgba(62,207,224,0.7); background: rgba(62,207,224,0.12); color: #3ECFE0; font-size: 54px; font-weight: 900; opacity: 0; }
+        #s6-q { position: absolute; left: 860px; top: 470px; width: 900px; color: #ECF6FF; font-size: 56px; font-weight: 900; line-height: 1.4; opacity: 0; }
+        #s6-strip { position: absolute; left: 0; right: 0; top: 800px; display: flex; justify-content: center; gap: 36px; }
+        .s6-node { padding: 22px 40px; border-radius: 18px; background: rgba(20,60,90,0.6); border: 3px solid rgba(120,190,215,0.55); color: #ECF6FF; font-size: 44px; font-weight: 700; opacity: 0; }
+        #s6-x { position: absolute; left: 900px; top: 610px; width: 820px; height: 120px; opacity: 0; }
+      </style>
+      <div id="root" data-composition-id="s6" data-width="1920" data-height="1080">
+        <div class="clip" id="s6-tank-clip" data-start="0" data-duration="16.36" data-track-index="0">
+          <div id="s6-diagram">
+            <div id="s6-tank">
+              <div id="s6-water"></div>
+              <div id="s6-surface"></div>
+              <div id="s6-fish">
+                <svg viewBox="0 0 120 60" width="150" height="75">
+                  <ellipse cx="48" cy="30" rx="34" ry="18" fill="#3ECFE0"/>
+                  <polygon points="80,30 110,12 104,30 110,48" fill="#2AB5C7"/>
+                  <circle cx="28" cy="25" r="4.5" fill="#061523"/>
+                </svg>
+              </div>
+              <div class="s6-pellet" id="s6-p1" style="left:300px; top:80px;"></div>
+              <div class="s6-pellet" id="s6-p2" style="left:400px; top:76px;"></div>
+            </div>
+            <div id="s6-feedlabel" data-var-text="s6label">鱼食从顶上来 ↓</div>
+            <div id="s6-chip">7秒记忆？</div>
+            <div id="s6-q">那它怎么能记住，<br/>鱼食是从上面来的呢？</div>
+            <div id="s6-x">
+              <svg viewBox="0 0 200 40">
+                <line x1="6" y1="6" x2="194" y2="34" stroke="#FF5A5F" stroke-width="8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="s6-strip-clip" data-start="10.56" data-duration="5.8" data-track-index="1">
+          <div id="s6-strip">
+            <div class="s6-node" id="s6-n1">刚吃完鱼食</div>
+            <div class="s6-node" id="s6-n2">7 秒之后</div>
+            <div class="s6-node" id="s6-n3">忘了？</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // 图表淡入
+        tl.fromTo("#s6-diagram", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, 0);
+        // 鱼食从水面落下 (喂食从顶上 1.47 本地)
+        tl.fromTo("#s6-p1", { y: 0, opacity: 0 }, { opacity: 1, y: 300, duration: 1.5, ease: "power1.in" }, 0.5);
+        tl.fromTo("#s6-p2", { y: 0, opacity: 0 }, { opacity: 1, y: 330, duration: 1.7, ease: "power1.in" }, 0.9);
+        tl.fromTo("#s6-feedlabel", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.47);
+        // 鱼抬头看食
+        tl.to("#s6-fish", { y: -40, duration: 0.7, ease: "sine.inOut" }, 2.0);
+        tl.to("#s6-fish", { y: 0, duration: 0.7, ease: "sine.inOut" }, 2.7);
+        // "7秒记忆" 徽章 (5.05)
+        tl.fromTo("#s6-chip", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.05);
+        // 灵魂拷问 (7.8)
+        tl.fromTo("#s6-q", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 7.8);
+        // 红叉划过整条逻辑 (9.9)
+        tl.fromTo("#s6-x", { opacity: 0, scaleX: 0 }, { opacity: 1, scaleX: 1, duration: 0.45, ease: "power2.out" }, 9.9);
+        // 底部链条：刚吃完 → 7秒 → 忘了? (10.56+)
+        tl.fromTo("#s6-n1", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 10.56);
+        tl.fromTo("#s6-n2", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 13.99);
+        tl.fromTo("#s6-n3", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(1.8)" }, 15.2);
+        tl.to("#s6-n3", { borderColor: "#FF5A5F", color: "#FF5A5F", duration: 0.3, ease: "power1.inOut" }, 15.55);
+        window.__timelines["s6"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

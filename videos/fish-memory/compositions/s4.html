@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #061523; }
+        .card { position: absolute; top: 260px; width: 560px; height: 520px; border-radius: 28px; background: rgba(20,60,90,0.35); border: 4px solid rgba(120,190,215,0.5); text-align: center; }
+        .card h2 { color: #ECF6FF; font-size: 52px; font-weight: 700; margin-top: 30px; }
+        .tag { display: inline-block; margin: 10px 12px 0; padding: 8px 26px; border-radius: 999px; font-size: 36px; font-weight: 700; color: #ECF6FF; background: rgba(62,207,224,0.18); border: 2px solid rgba(62,207,224,0.6); }
+        #s4-pro { left: 250px; }
+        #s4-mine { left: 1110px; border-color: rgba(255,180,84,0.7); }
+        #s4-mine h2 { color: #FFB454; }
+        #s4-cross { position: absolute; left: 60px; top: 150px; width: 440px; height: 330px; }
+        .s4-bub { position: absolute; border-radius: 50%; border: 2px solid rgba(62,207,224,0.35); }
+      </style>
+      <div id="root" data-composition-id="s4" data-width="1920" data-height="1080">
+        <!-- 专业鱼缸卡 -->
+        <div class="clip" id="s4-pro-clip" data-start="0.15" data-duration="9.39" data-track-index="0">
+          <div class="card" id="s4-pro">
+            <h2>专业鱼缸</h2>
+            <div>
+              <span class="tag" id="s4-t1">过滤</span>
+              <span class="tag" id="s4-t2">换水</span>
+              <span class="tag" id="s4-t3">换气</span>
+            </div>
+            <svg id="s4-cross" viewBox="0 0 100 100">
+              <line id="s4-x1" x1="8" y1="8" x2="92" y2="92" stroke="#FF5A5F" stroke-width="9" stroke-linecap="round"/>
+              <line id="s4-x2" x1="92" y1="8" x2="8" y2="92" stroke="#FF5A5F" stroke-width="9" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- 我们的缸子卡 -->
+        <div class="clip" id="s4-mine-clip" data-start="4.4" data-duration="5.14" data-track-index="1">
+          <div class="card" id="s4-mine">
+            <h2 data-var-text="s4title">我们的缸子</h2>
+            <div style="margin-top:26px;">
+              <svg viewBox="0 0 200 130" width="340" height="220">
+                <rect x="10" y="10" width="180" height="110" rx="18" fill="rgba(24,90,130,0.5)" stroke="rgba(160,215,235,0.8)" stroke-width="4"/>
+                <line x1="10" y1="34" x2="190" y2="34" stroke="rgba(120,210,235,0.9)" stroke-width="3"/>
+                <g id="s4-mine-fish">
+                  <ellipse cx="95" cy="75" rx="30" ry="16" fill="#3ECFE0"/>
+                  <polygon points="122,75 146,62 141,75 146,88" fill="#2AB5C7"/>
+                  <circle cx="78" cy="70" r="4" fill="#061523"/>
+                </g>
+              </svg>
+            </div>
+            <div style="color:#ECF6FF; font-size:40px; font-weight:700; margin-top:4px;">就养一条鱼</div>
+          </div>
+        </div>
+        <div class="clip" id="s4-bub-clip" data-start="0" data-duration="9.54" data-track-index="2" data-layout-ignore>
+          <div class="s4-bub" id="s4-b1" style="left:180px; top:1020px; width:24px; height:24px;"></div>
+          <div class="s4-bub" id="s4-b2" style="left:1720px; top:1060px; width:30px; height:30px;"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // 专业鱼缸卡先出现
+        tl.fromTo("#s4-pro", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.15);
+        // "过滤/换水/换气" 逐个弹出 (旁白 21.7 输出 = 3.36 本地)
+        tl.fromTo("#s4-t1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 1.3);
+        tl.fromTo("#s4-t2", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 3.36);
+        tl.fromTo("#s4-t3", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 3.8);
+        // "没有" (4.25) → 大红叉划掉
+        tl.fromTo("#s4-x1", { attr: { "stroke-dashoffset": 120 }, strokeDasharray: 120 }, { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power2.out" }, 4.25);
+        tl.fromTo("#s4-x2", { attr: { "stroke-dashoffset": 120 }, strokeDasharray: 120 }, { attr: { "stroke-dashoffset": 0 }, duration: 0.4, ease: "power2.out" }, 4.5);
+        tl.to("#s4-pro", { opacity: 0.45, duration: 0.5, ease: "power1.inOut" }, 4.6);
+        // 我们的缸子卡 (4.4)
+        tl.fromTo("#s4-mine", { opacity: 0, y: 70 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 4.4);
+        // 鱼出现 (养了条鱼 5.33)
+        tl.fromTo("#s4-mine-fish", { opacity: 0, scale: 0.3, transformOrigin: "95px 75px" }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.33);
+        // "对不对?" (6.54) 卡片弹跳
+        tl.to("#s4-mine", { scale: 1.04, duration: 0.18, ease: "power2.out" }, 6.54);
+        tl.to("#s4-mine", { scale: 1, duration: 0.22, ease: "power2.inOut" }, 6.72);
+        // "每次靠近它" (7.25–9.54) 鱼朝观察者方向动
+        tl.to("#s4-mine-fish", { x: 26, duration: 0.6, ease: "sine.inOut" }, 7.3);
+        tl.to("#s4-mine-fish", { x: -8, duration: 0.6, ease: "sine.inOut" }, 7.9);
+        tl.to("#s4-mine-fish", { x: 0, duration: 0.5, ease: "sine.inOut" }, 8.5);
+        // 气泡
+        tl.fromTo("#s4-b1", { y: 0 }, { y: -1120, duration: 9.54, ease: "none" }, 0);
+        tl.fromTo("#s4-b2", { y: 0 }, { y: -1160, duration: 9.54, ease: "none" }, 0);
+        window.__timelines["s4"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

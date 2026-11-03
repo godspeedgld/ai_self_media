@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #061523; }
+        #s5-tank { position: absolute; left: 510px; top: 170px; width: 900px; height: 680px; border: 6px solid rgba(160,215,235,0.75); border-radius: 26px; background: rgba(20,60,90,0.35); overflow: hidden; }
+        #s5-water { position: absolute; left: 0; right: 0; top: 80px; bottom: 0; background: rgba(24,90,130,0.55); }
+        #s5-surface { position: absolute; left: 0; right: 0; top: 78px; height: 5px; background: rgba(120,210,235,0.9); }
+        #s5-fish { position: absolute; left: 370px; top: 480px; width: 170px; height: 85px; }
+        #s5-flat { position: absolute; left: 120px; top: 560px; width: 150px; height: 75px; opacity: 0; }
+        #s5-label-flat { position: absolute; left: 96px; top: 660px; color: #6E8CA0; font-size: 38px; font-weight: 700; opacity: 0; }
+        #s5-label-vert { position: absolute; left: 800px; top: 180px; color: #FFB454; font-size: 46px; font-weight: 900; opacity: 0; }
+        #s5-ring { position: absolute; left: 395px; top: 120px; width: 250px; height: 60px; opacity: 0; }
+        #s5-spark { position: absolute; left: 340px; top: 100px; width: 300px; height: 230px; opacity: 0; }
+        .s5-bub { position: absolute; border-radius: 50%; border: 2px solid rgba(62,207,224,0.4); }
+      </style>
+      <div id="root" data-composition-id="s5" data-width="1920" data-height="1080">
+        <div class="clip" id="s5-tank-clip" data-start="0" data-duration="13.88" data-track-index="0">
+          <div id="s5-tank-g">
+            <div id="s5-tank">
+              <div id="s5-water"></div>
+              <div id="s5-surface"></div>
+              <div id="s5-fish">
+                <svg viewBox="0 0 120 60" width="170" height="85">
+                  <ellipse cx="48" cy="30" rx="34" ry="18" fill="#3ECFE0"/>
+                  <polygon points="80,30 110,12 104,30 110,48" fill="#2AB5C7"/>
+                  <circle cx="28" cy="25" r="4.5" fill="#061523"/>
+                  <path d="M38 38 q10 7 22 0" stroke="#0AA3B5" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div id="s5-flat">
+                <svg viewBox="0 0 120 60" width="150" height="75">
+                  <ellipse cx="48" cy="30" rx="34" ry="18" fill="none" stroke="#6E8CA0" stroke-width="3" stroke-dasharray="8 6"/>
+                  <polygon points="80,30 110,12 104,30 110,48" fill="none" stroke="#6E8CA0" stroke-width="3"/>
+                </svg>
+              </div>
+              <div id="s5-label-flat">以前：平着游</div>
+              <div id="s5-ring">
+                <svg viewBox="0 0 250 60">
+                  <ellipse cx="125" cy="30" rx="110" ry="22" fill="none" stroke="rgba(120,210,235,0.8)" stroke-width="4"/>
+                  <ellipse cx="125" cy="30" rx="70" ry="14" fill="none" stroke="rgba(120,210,235,0.55)" stroke-width="3"/>
+                </svg>
+              </div>
+              <div id="s5-spark">
+                <svg viewBox="0 0 260 200">
+                  <g stroke="#FFB454" stroke-width="6" stroke-linecap="round">
+                    <line x1="30" y1="30" x2="66" y2="66"/>
+                    <line x1="230" y1="30" x2="194" y2="66"/>
+                    <line x1="30" y1="170" x2="66" y2="134"/>
+                    <line x1="230" y1="170" x2="194" y2="134"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div id="s5-label-vert" data-var-text="s5label">竖起来了！</div>
+          </div>
+        </div>
+        <div class="clip" id="s5-bub-clip" data-start="0" data-duration="13.88" data-track-index="1" data-layout-ignore>
+          <div class="s5-bub" id="s5-b1" style="left:280px; top:1010px; width:26px; height:26px;"></div>
+          <div class="s5-bub" id="s5-b2" style="left:1660px; top:1050px; width:22px; height:22px;"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // 缸子淡入
+        tl.fromTo("#s5-tank-g", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0);
+        // 第一次冲上来 (28.94 输出 = 本地 1.06)
+        tl.fromTo("#s5-fish", { y: 0 }, { y: -370, duration: 1.0, ease: "power2.out" }, 1.06);
+        tl.to("#s5-fish", { y: -330, duration: 0.4, ease: "sine.inOut" }, 2.2);
+        // "它本来可能在缸子底下" (30.28 输出 = 2.4) 鱼落回底部
+        tl.to("#s5-fish", { y: 0, duration: 0.85, ease: "power1.inOut" }, 2.6);
+        // 第二次冲上来 (31.53 = 3.65)
+        tl.to("#s5-fish", { y: -370, duration: 0.95, ease: "power2.out" }, 3.65);
+        // 卖力表演 (4.56–6.87)：左右摆尾 + 星光
+        tl.to("#s5-fish", { rotation: 14, duration: 0.28, ease: "sine.inOut" }, 4.56);
+        tl.to("#s5-fish", { rotation: -14, duration: 0.28, ease: "sine.inOut" }, 4.84);
+        tl.to("#s5-fish", { rotation: 12, duration: 0.28, ease: "sine.inOut" }, 5.12);
+        tl.to("#s5-fish", { rotation: -12, duration: 0.28, ease: "sine.inOut" }, 5.4);
+        tl.to("#s5-fish", { rotation: 0, duration: 0.3, ease: "sine.inOut" }, 5.68);
+        tl.fromTo("#s5-spark", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1.15, duration: 0.5, ease: "power2.out" }, 4.9);
+        tl.to("#s5-spark", { opacity: 0, duration: 0.4, ease: "power1.in" }, 6.6);
+        // 以前平着游 (7.05–10.6)：虚线鱼 + 标签
+        tl.to("#s5-flat", { opacity: 0.9, duration: 0.4, ease: "power1.out" }, 7.2);
+        tl.to("#s5-label-flat", { opacity: 1, duration: 0.4, ease: "power1.out" }, 7.3);
+        tl.to("#s5-flat", { x: 60, duration: 1.4, ease: "sine.inOut" }, 7.6);
+        tl.to("#s5-flat", { x: 0, duration: 1.2, ease: "sine.inOut" }, 9.0);
+        // 它能竖得起来 (11.19)：主鱼旋转成竖直，虚线鱼消失
+        tl.to("#s5-flat", { opacity: 0, duration: 0.35, ease: "power1.in" }, 11.0);
+        tl.to("#s5-label-flat", { opacity: 0, duration: 0.35, ease: "power1.in" }, 11.0);
+        tl.to("#s5-fish", { rotation: -90, duration: 0.8, ease: "back.out(1.6)" }, 11.19);
+        tl.to("#s5-fish", { y: -430, duration: 0.8, ease: "power2.out" }, 11.19);
+        tl.fromTo("#s5-label-vert", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)" }, 12.0);
+        // 哇，水面上涟漪 (12.61)
+        tl.fromTo("#s5-ring", { opacity: 0, scaleX: 0.5 }, { opacity: 1, scaleX: 1.15, duration: 0.6, ease: "power1.out" }, 12.6);
+        tl.to("#s5-ring", { opacity: 0.4, duration: 0.68, ease: "sine.inOut" }, 13.2);
+        // 气泡
+        tl.fromTo("#s5-b1", { y: 0 }, { y: -1140, duration: 13.88, ease: "none" }, 0);
+        tl.fromTo("#s5-b2", { y: 0 }, { y: -1180, duration: 13.88, ease: "none" }, 0);
+        window.__timelines["s5"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

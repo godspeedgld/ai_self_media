@@ -73,3 +73,12 @@ htmlcov/
 # Claude Code（skills 随仓库共享，其余本地忽略）
 .claude/*
 !.claude/skills/
+
+# 本地工具链与大文件（whisper 二进制、模型缓存）
+/tools/
+/.hf-cache/
+
+# 视频工程生成物与原始素材
+videos/*/renders/
+videos/*/.hyperframes/
+records/*.m4a

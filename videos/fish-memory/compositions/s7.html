@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #061523; }
+        #s7-card {
+          position: absolute; left: 460px; top: 330px; width: 1000px;
+          background: rgba(62,207,224,0.08); border: 4px solid rgba(62,207,224,0.55);
+          border-radius: 30px; padding: 70px 60px; text-align: center;
+        }
+        #s7-claim { color: #ECF6FF; font-size: 72px; font-weight: 700; }
+        #s7-seven { color: #3ECFE0; font-size: 130px; font-weight: 900; }
+        #s7-strike { position: absolute; left: 90px; top: 50%; width: 820px; height: 14px; background: #FF5A5F; border-radius: 7px; transform-origin: left center; }
+        #s7-stamp[data-layout-allow-overlap] { }
+        #s7-stamp-g { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        #s7-stamp {
+          transform: rotate(-12deg); color: #FF5A5F; border: 9px solid #FF5A5F;
+          border-radius: 20px; padding: 8px 44px; font-size: 150px; font-weight: 900;
+          letter-spacing: 0.12em; opacity: 0; background: rgba(255,90,95,0.08);
+        }
+        #s7-sub { position: absolute; left: 0; right: 0; top: 830px; text-align: center; color: #6E8CA0; font-size: 44px; font-weight: 700; opacity: 0; }
+        #s7-fish { position: absolute; left: 1500px; top: 900px; width: 140px; height: 70px; opacity: 0; }
+      </style>
+      <div id="root" data-composition-id="s7" data-width="1920" data-height="1080">
+        <div class="clip" id="s7-card-clip" data-start="0" data-duration="7.28" data-track-index="0">
+          <div id="s7-card-g">
+            <div id="s7-card">
+              <div id="s7-claim">鱼的记忆只有 <span id="s7-seven">7</span> 秒</div>
+              <div id="s7-strike" data-layout-allow-occlusion></div>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="s7-stamp-clip" data-start="3.09" data-duration="4.19" data-track-index="1">
+          <div id="s7-stamp-g">
+            <div id="s7-stamp" data-var-text="verdict" data-layout-allow-overlap>谣言</div>
+          </div>
+        </div>
+        <div class="clip" id="s7-sub-clip" data-start="4.37" data-duration="2.91" data-track-index="2">
+          <div id="s7-sub">至少，我们养的那条鱼不是</div>
+        </div>
+        <div class="clip" id="s7-fish-clip" data-start="4.88" data-duration="2.4" data-track-index="3">
+          <div id="s7-fish">
+            <svg viewBox="0 0 120 60" width="140" height="70">
+              <ellipse cx="48" cy="30" rx="34" ry="18" fill="#3ECFE0"/>
+              <polygon points="80,30 110,12 104,30 110,48" fill="#2AB5C7"/>
+              <circle cx="28" cy="25" r="4.5" fill="#061523"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // 卡片重现
+        tl.fromTo("#s7-card", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+        // "谣言"旁白起 (1.49) 划掉
+        tl.fromTo("#s7-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power3.inOut" }, 1.55);
+        tl.to("#s7-card", { filter: "saturate(0.4)", duration: 0.6, ease: "power1.inOut" }, 1.55);
+        // 红章砸下 (3.3)
+        tl.fromTo("#s7-stamp", { opacity: 0, scale: 2.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.in" }, 3.3);
+        tl.to("#s7-card-g", { x: 4, duration: 0.08, ease: "power1.in" }, 3.68);
+        tl.to("#s7-card-g", { x: -4, duration: 0.08, ease: "power1.out" }, 3.76);
+        tl.to("#s7-card-g", { x: 0, duration: 0.1, ease: "power1.inOut" }, 3.84);
+        // 副文案 (4.37)
+        tl.fromTo("#s7-sub", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 4.37);
+        // 小鱼从右往左游走 (4.88)
+        tl.fromTo("#s7-fish", { opacity: 0, x: 0 }, { opacity: 1, x: -300, duration: 2.2, ease: "power1.inOut" }, 4.88);
+        tl.to("#s7-fish", { rotation: -6, duration: 0.4, ease: "sine.inOut" }, 5.2);
+        tl.to("#s7-fish", { rotation: 6, duration: 0.4, ease: "sine.inOut" }, 5.6);
+        tl.to("#s7-fish", { rotation: 0, duration: 0.4, ease: "sine.inOut" }, 6.0);
+        window.__timelines["s7"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #061523; }
+        .bubble { position: absolute; border-radius: 50%; border: 2px solid rgba(62,207,224,0.45); }
+        #s2-card-g { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+        #s2-card {
+          background: rgba(62,207,224,0.08); border: 3px solid rgba(62,207,224,0.55);
+          border-radius: 28px; padding: 64px 90px; text-align: center;
+        }
+        #s2-claim { color: #ECF6FF; font-size: 76px; font-weight: 700; }
+        #s2-seven { color: #3ECFE0; font-size: 220px; font-weight: 900; line-height: 1; display: inline-block; }
+        #s2-unit { color: #ECF6FF; font-size: 90px; font-weight: 700; }
+        #s2-q {
+          position: absolute; right: 300px; top: 210px;
+          color: #FFB454; font-size: 170px; font-weight: 900;
+        }
+      </style>
+      <div id="root" data-composition-id="s2" data-width="1920" data-height="1080">
+        <div class="clip" id="s2-bub-clip" data-start="0" data-duration="4.22" data-track-index="0" data-layout-ignore>
+          <div class="bubble" id="s2-b1" style="left:420px; top:960px; width:30px; height:30px;"></div>
+          <div class="bubble" id="s2-b2" style="left:1520px; top:1020px; width:24px; height:24px;"></div>
+        </div>
+        <div class="clip" id="s2-card-clip" data-start="0.1" data-duration="4.12" data-track-index="1">
+          <div id="s2-card-g">
+            <div id="s2-card">
+              <div id="s2-claim" data-var-text="mythClaim">我们都说，鱼有</div>
+              <div><span id="s2-seven">7</span><span id="s2-unit">秒的记忆</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="s2-q-clip" data-start="1.75" data-duration="2.47" data-track-index="2">
+          <div id="s2-q-g" style="position:absolute; inset:0;">
+            <div id="s2-q">？</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+        // 卡片浮现
+        tl.fromTo("#s2-card", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.12);
+        // "7" 落下重击
+        tl.fromTo("#s2-seven", { scale: 2.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power4.out" }, 0.55);
+        // 卡片轻微摇晃（怀疑）
+        tl.to("#s2-card-g", { rotation: 1.4, duration: 0.28, ease: "sine.inOut" }, 1.75);
+        tl.to("#s2-card-g", { rotation: -1.2, duration: 0.3, ease: "sine.inOut" }, 2.03);
+        tl.to("#s2-card-g", { rotation: 0, duration: 0.26, ease: "sine.inOut" }, 2.33);
+        // 大问号砸出来
+        tl.fromTo("#s2-q", { opacity: 0, scale: 3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.out" }, 1.79);
+        tl.to("#s2-q", { y: 10, duration: 0.5, ease: "sine.inOut" }, 2.2);
+        tl.to("#s2-q", { y: -8, duration: 0.5, ease: "sine.inOut" }, 2.7);
+        tl.to("#s2-q", { y: 0, duration: 0.5, ease: "sine.inOut" }, 3.2);
+        // 气泡
+        tl.fromTo("#s2-b1", { y: 0 }, { y: -1040, duration: 4.22, ease: "none" }, 0);
+        tl.fromTo("#s2-b2", { y: 0 }, { y: -1100, duration: 4.22, ease: "none" }, 0);
+        window.__timelines["s2"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
