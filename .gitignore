@@ -70,5 +70,6 @@ docker-compose.override.yml
 .coverage
 htmlcov/
 
-# Claude Code
-.claude/
+# Claude Code（skills 随仓库共享，其余本地忽略）
+.claude/*
+!.claude/skills/
