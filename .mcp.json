@@ -1,0 +1,10 @@
+{
+    "mcpServers":  {
+                       "comfy-mcp":  {
+                                         "command":  "C:\\Anaconda\\envs\\quant_env_311\\Scripts\\comfy-mcp.exe",
+                                         "env":  {
+                                                     "COMFY_BIN":  "C:\\Anaconda\\envs\\quant_env_311\\Scripts\\comfy.exe"
+                                                 }
+                                     }
+                   }
+}
