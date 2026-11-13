@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s13" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>13 / 17</div>
+
+        <div class="clip" id="c-bub" data-start="0.2" data-duration="23" data-track-index="0">
+          <div style="position:absolute; inset:0;">
+            <div id="bub" style="position:absolute; left:760px; top:190px; width:400px; height:400px; border-radius:50%; border:5px solid rgba(91,155,255,0.55); background:radial-gradient(circle at 35% 30%, rgba(91,155,255,0.14), rgba(91,155,255,0.02));">
+              <div style="text-align:center; margin-top:158px;"><span class="blue" style="font-size:64px; font-weight:900;">AI 泡沫</span></div>
+              <svg viewBox="0 0 400 400" width="400" height="400" style="position:absolute; inset:0;">
+                <path id="crack" d="M200 40 L178 150 L235 210 L186 300" fill="none" stroke="#E5484D" stroke-width="8" stroke-linecap="round" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="110"/>
+              </svg>
+            </div>
+            <div id="bub-t" style="position:absolute; left:0; right:0; top:680px; text-align:center; opacity:0;">
+              <span class="red" style="font-size:84px; font-weight:900;">眼见着，泡沫要破</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#bub", { opacity: 0, y: 220, scale: 0.7 }, { opacity: 1, y: 0, scale: 1, duration: 1.6, ease: "power1.out" }, 0.2);
+        tl.to("#bub", { y: -60, duration: 6, ease: "sine.inOut" }, 1.8);
+        tl.to("#bub", { y: -30, duration: 5, ease: "sine.inOut" }, 7.8);
+        tl.fromTo("#crack", { attr: { "stroke-dashoffset": 110 }, strokeDasharray: "100 120" }, { attr: { "stroke-dashoffset": 0 }, duration: 1.6, ease: "power2.in" }, 15.5);
+        tl.fromTo("#bub-t", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 16.2);
+        tl.to("#bub", { scale: 1.06, duration: 0.5, ease: "power1.inOut" }, 18.5);
+        tl.to("#bub", { scale: 1, duration: 0.5, ease: "power1.inOut" }, 19.0);
+        window.__timelines["s13"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

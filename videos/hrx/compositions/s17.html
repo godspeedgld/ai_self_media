@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s17" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>17 / 17</div>
+
+        <div class="clip" id="c-f" data-start="0.1" data-duration="18.8" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:52px;">
+            <div id="f1" style="opacity:0;"><span class="dim" style="font-size:46px; font-weight:700;">所以，或许搞黄仁勋——</span></div>
+            <div id="f2" style="opacity:0;"><span class="ink" style="font-size:56px; font-weight:700;">「华人身份」也许是原因之一，</span><span class="dim" style="font-size:46px; font-weight:700;">但更是——</span></div>
+            <div id="f3" style="text-align:center; opacity:0;">
+              <div class="red" style="font-size:96px; font-weight:900; letter-spacing:0.06em;">AI 这场盛宴，结束了</div>
+              <div class="gold" style="font-size:58px; font-weight:900; margin-top:20px;">总得有人，出来交代</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#f1", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.out" }, 0.2);
+        tl.fromTo("#f2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.8);
+        tl.fromTo("#f3", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.7, ease: "power3.out" }, 9.8);
+        window.__timelines["s17"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

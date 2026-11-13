@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s15" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>15 / 17</div>
+
+        <div class="clip" id="c-sy" data-start="0.1" data-duration="15.9" data-track-index="0">
+          <div id="sy-t" style="position:absolute; left:0; right:0; top:110px; text-align:center; opacity:0;"><span class="ink" style="font-size:66px; font-weight:900;">这时候，你总得有个<span class="gold">交代</span></span></div>
+        </div>
+        <div class="clip" id="c-a" data-start="4.8" data-duration="11.2" data-track-index="7.8">
+          <div id="g-a" style="position:absolute; left:0; right:0; top:270px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1000px; padding:22px 50px; border-radius:14px; background:rgba(20,26,40,0.55); border:2px solid rgba(124,134,152,0.5); display:flex; align-items:center; gap:30px;">
+              <span class="red" style="font-size:52px; font-weight:900;">✗</span>
+              <span class="dim" style="font-size:46px; font-weight:700; text-decoration:line-through;">不能说我们没钱了</span>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="c-b" data-start="6.6" data-duration="9.4" data-track-index="9.6">
+          <div id="g-b" style="position:absolute; left:0; right:0; top:504px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1000px; padding:22px 50px; border-radius:14px; background:rgba(20,26,40,0.55); border:2px solid rgba(124,134,152,0.5); display:flex; align-items:center; gap:30px;">
+              <span class="red" style="font-size:52px; font-weight:900;">✗</span>
+              <span class="dim" style="font-size:46px; font-weight:700; text-decoration:line-through;">不能说我们搞不下去了</span>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="c-c" data-start="8.4" data-duration="7.6" data-track-index="11.4">
+          <div id="g-c" style="position:absolute; left:0; right:0; top:738px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1000px; padding:22px 50px; border-radius:14px; background:rgba(20,26,40,0.55); border:2px solid rgba(124,134,152,0.5); display:flex; align-items:center; gap:30px;">
+              <span class="red" style="font-size:52px; font-weight:900;">✗</span>
+              <span class="dim" style="font-size:46px; font-weight:700; text-decoration:line-through;">更不能说：我们跟中国的竞争失败了</span>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="c-sy2" data-start="11.5" data-duration="4.5" data-track-index="8">
+          <div style="position:absolute; left:0; right:0; top:640px; display:flex; justify-content:center;">
+            <div id="sy2" style="padding:20px 64px; border-radius:16px; border:6px solid #E6B455; color:#E6B455; font-size:76px; font-weight:900; opacity:0;">所以——得找个替罪羊</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#sy-t", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
+        [["#g-a", 4.8], ["#g-b", 6.6], ["#g-c", 8.4]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, x: -70 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, at);
+        });
+        tl.fromTo("#sy2", { opacity: 0, scale: 2 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 11.6);
+        window.__timelines["s15"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

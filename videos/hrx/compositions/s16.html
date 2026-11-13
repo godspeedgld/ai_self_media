@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s16" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>16 / 17</div>
+
+        <div class="clip" id="c-jh" data-start="0.2" data-duration="26.3" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; gap:38px;">
+            <div id="jh-n" class="ink" style="font-size:96px; font-weight:900; opacity:0;">黄仁勋 <span class="dim" style="font-size:44px; font-weight:700;">往周边一看</span></div>
+            <div style="display:flex; gap:36px;" id="jh-tags">
+              <div id="jh-t1" style="opacity:0; padding:16px 44px; border-radius:999px; border:3px solid #E5484D; color:#E5484D; font-size:46px; font-weight:900;">华人</div>
+              <div id="jh-t2" style="opacity:0; padding:16px 44px; border-radius:999px; border:3px solid #E5484D; color:#E5484D; font-size:46px; font-weight:900;">出轨对象也是华人</div>
+              <div id="jh-t3" style="opacity:0; padding:16px 44px; border-radius:999px; border:2px solid rgba(124,134,152,0.6); color:#7C8698; font-size:42px; font-weight:700;">大小长短，各种合适</div>
+            </div>
+            <div id="jh-hit" style="margin-top:16px; opacity:0;">
+              <span class="red" style="font-size:100px; font-weight:900; letter-spacing:0.08em;">出轨 + 间谍，一耙子打死</span>
+            </div>
+            <div id="jh-st" class="gold" style="font-size:54px; font-weight:900; opacity:0;">交代出来了！</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#jh-n", { opacity: 0, y: -28 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.3);
+        tl.fromTo("#jh-t1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 3.3);
+        tl.fromTo("#jh-t2", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 5.7);
+        tl.fromTo("#jh-t3", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power1.out" }, 8.2);
+        tl.fromTo("#jh-hit", { opacity: 0, scale: 1.8 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, 10.0);
+        tl.fromTo("#jh-st", { opacity: 0, scale: 2.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power4.in" }, 14.5);
+        tl.fromTo("#jh-st", { rotation: 0 }, { rotation: -4, duration: 0.18, ease: "sine.inOut" }, 14.9);
+        tl.to("#jh-st", { rotation: 0, duration: 0.18, ease: "sine.inOut" }, 15.08);
+        window.__timelines["s16"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

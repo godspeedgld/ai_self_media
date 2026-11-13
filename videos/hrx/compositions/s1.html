@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>01 / 17</div>
+
+        <div class="clip" id="c-t" data-start="0" data-duration="25" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:36px;">
+            <div id="t1" class="ink" style="font-size:128px; font-weight:900; letter-spacing:0.06em; opacity:0.25;">黄仁勋辞职</div>
+            <div id="t2" style="opacity:0;"><span class="dim" style="font-size:48px; font-weight:700;">理由：</span><span class="red" style="font-size:76px; font-weight:900;">出轨</span><span class="dim" style="font-size:56px; font-weight:900;"> + </span><span class="blue" style="font-size:76px; font-weight:900;">间谍</span></div>
+          </div>
+        </div>
+        <div class="clip" id="c-k" data-start="9.5" data-duration="15.5" data-track-index="1">
+          <div style="position:absolute; left:0; right:0; top:800px; display:flex; justify-content:center; gap:36px;">
+            <div id="k1" style="opacity:0; padding:18px 40px; border:2px solid rgba(124,134,152,0.6); border-radius:12px; color:#E8DCC0; color:#F2F4F8; font-size:38px; font-weight:700;">搞臭一个人：黄色段子</div>
+            <div id="k2" style="opacity:0; padding:18px 40px; border:2px solid rgba(91,155,255,0.6); border-radius:12px; color:#F2F4F8; font-size:38px; font-weight:700;">川普也被告过强奸</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#t1", { opacity: 0.25, scale: 1.7 }, { opacity: 1, scale: 1, duration: 0.55, ease: "power4.out" }, 0.02);
+        tl.fromTo("#t2", { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 4.6);
+        tl.fromTo("#k1", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 10.2);
+        tl.fromTo("#k2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 16.5);
+        window.__timelines["s1"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s11" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>11 / 17</div>
+
+        <div class="clip" id="c-ns" data-start="0" data-duration="22.7" data-track-index="0">
+          <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:46px;">
+            <div id="ns-t" class="red" style="font-size:120px; font-weight:900; opacity:0;">万万没想到</div>
+            <div style="display:flex; gap:46px; align-items:center;" id="ns-r">
+              <div style="padding:24px 44px; border-radius:16px; border:3px solid #5B9BFF; text-align:center; opacity:0;" id="ns-us">
+                <div class="blue" style="font-size:40px; font-weight:900;">美国</div>
+                <div class="ink" style="font-size:44px; font-weight:700; margin-top:6px;">全力以赴</div>
+              </div>
+              <div class="dim" style="font-size:56px; font-weight:900; opacity:0;" id="ns-vs">VS</div>
+              <div style="padding:24px 44px; border-radius:16px; border:3px solid #E5484D; text-align:center; opacity:0;" id="ns-cn">
+                <div class="red" style="font-size:40px; font-weight:900;">中国</div>
+                <div class="ink" style="font-size:44px; font-weight:700; margin-top:6px;">≤ 1/5 成本</div>
+              </div>
+            </div>
+            <div id="ns-g" class="gold" style="font-size:60px; font-weight:900; opacity:0;">始终只落后美国半代</div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#ns-t", { opacity: 0, scale: 2.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 0.05);
+        tl.fromTo("#ns-us", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 4.2);
+        tl.fromTo("#ns-vs", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 4.7);
+        tl.fromTo("#ns-cn", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 5.0);
+        tl.fromTo("#ns-g", { opacity: 0, scale: 1.5 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power4.out" }, 11.8);
+        tl.fromTo("#ns-g", { x: 0 }, { x: 10, duration: 0.12, ease: "power1.in" }, 17.5);
+        tl.to("#ns-g", { x: -8, duration: 0.12, ease: "power1.inOut" }, 17.62);
+        tl.to("#ns-g", { x: 0, duration: 0.16, ease: "power1.out" }, 17.74);
+        window.__timelines["s11"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

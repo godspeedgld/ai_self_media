@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s6" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>06 / 17</div>
+
+        <div class="clip" id="c-t6" data-start="0" data-duration="33.8" data-track-index="0">
+          <div id="t6" style="position:absolute; left:0; right:0; top:100px; text-align:center; opacity:0;"><span class="ink" style="font-size:56px; font-weight:900;">每项新技术诞生时，都没人知道未来</span></div>
+        </div>
+        
+        <div class="clip" id="c-vr" data-start="180" data-duration="-146.2" data-track-index="1">
+          <div id="g-vr" style="position:absolute; left:0; right:0; top:180px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:900px; padding:26px 60px; border-radius:18px; background:rgba(20,26,40,0.6); border:2px solid rgba(229,72,77,0.5); text-align:center;">
+              <div class="blue" style="font-size:66px; font-weight:900;">VR</div>
+              <div class="dim" style="font-size:36px; font-weight:700; margin-top:8px;">吹得天花乱坠</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="clip" id="c-g5" data-start="400" data-duration="-366.2" data-track-index="2">
+          <div id="g-g5" style="position:absolute; left:0; right:0; top:400px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:900px; padding:26px 60px; border-radius:18px; background:rgba(20,26,40,0.6); border:2px solid rgba(229,72,77,0.5); text-align:center;">
+              <div class="blue" style="font-size:66px; font-weight:900;">5G</div>
+              <div class="dim" style="font-size:36px; font-weight:700; margin-top:8px;">当时牛逼得要死</div>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="c-dead" data-start="16.8" data-duration="17" data-track-index="3">
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+            <div id="dead-x" style="font-size:340px; font-weight:900; color:#E5484D; opacity:0;">✕</div>
+            <div id="dead-t" style="position:absolute; left:0; right:0; top:800px; text-align:center; opacity:0;"><span class="red" style="font-size:72px; font-weight:900;">现在还有人听吗？——没了</span></div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#t6", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 0.2);
+        tl.fromTo("#g-vr", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 4.5);
+        tl.fromTo("#g-g5", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "back.out(1.5)" }, 9.5);
+        tl.fromTo("#dead-x", { opacity: 0, scale: 3, rotation: -20 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.4, ease: "power4.in" }, 17.2);
+        tl.to("#g-vr", { opacity: 0.25, duration: 0.4, ease: "power1.inOut" }, 17.2);
+        tl.to("#g-g5", { opacity: 0.25, duration: 0.4, ease: "power1.inOut" }, 17.4);
+        tl.fromTo("#dead-t", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 18.0);
+        window.__timelines["s6"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

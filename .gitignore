@@ -89,3 +89,4 @@ records/*.mp4
 
 # 模型权重文件一律不进 git
 *.safetensors
+records/*.mp3

@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0B0F1A; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(124,134,152,0.25); pointer-events: none; }
+  .chap { position: absolute; left: 48px; top: 44px; color: #7C8698; font-size: 30px; font-weight: 700; letter-spacing: 0.14em; }
+  .glow1 { position: absolute; width: 1000px; height: 1000px; border-radius: 50%; background: radial-gradient(circle, rgba(91,155,255,0.05), transparent 65%); left: -220px; top: -260px; }
+  .glow2 { position: absolute; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(229,72,77,0.05), transparent 65%); right: -320px; bottom: -380px; }
+  .ink { color: #F2F4F8; }
+  .red { color: #E5484D; }
+  .blue { color: #5B9BFF; }
+  .gold { color: #E6B455; }
+  .dim { color: #7C8698; }
+</style>
+      <div id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="chap" data-layout-ignore>03 / 17</div>
+
+        <div class="clip" id="c-h" data-start="0" data-duration="45.7" data-track-index="0">
+          <div id="h-t" style="position:absolute; left:0; right:0; top:96px; text-align:center;"><span class="gold" style="font-size:54px; font-weight:900;">历史剧本：手上有过硬证据时——</span></div>
+        </div>
+        
+        <div class="clip" id="c-e1" data-start="6.2" data-duration="39.5" data-track-index="1">
+          <div id="g-e1" style="position:absolute; left:0; right:0; top:420px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1100px; padding:24px 50px; border:2px solid rgba(229,72,77,0.55); border-radius:16px; background:rgba(20,26,40,0.55); display:flex; justify-content:space-between; align-items:center;">
+              <div><span class="dim" style="font-size:34px; font-weight:700; margin-right:24px;">案例 1</span><span class="ink" style="font-size:52px; font-weight:900;">经济间谍</span></div>
+              <span class="red" style="font-size:44px; font-weight:900; padding:8px 28px; border:3px solid #E5484D; border-radius:10px;">直接诱捕</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="clip" id="c-e2" data-start="12.2" data-duration="33.5" data-track-index="2">
+          <div id="g-e2" style="position:absolute; left:0; right:0; top:590px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1100px; padding:24px 50px; border:2px solid rgba(229,72,77,0.55); border-radius:16px; background:rgba(20,26,40,0.55); display:flex; justify-content:space-between; align-items:center;">
+              <div><span class="dim" style="font-size:34px; font-weight:700; margin-right:24px;">案例 2</span><span class="ink" style="font-size:52px; font-weight:900;">发动机技术</span></div>
+              <span class="red" style="font-size:44px; font-weight:900; padding:8px 28px; border:3px solid #E5484D; border-radius:10px;">直接诱捕</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="clip" id="c-e3" data-start="20.2" data-duration="25.5" data-track-index="3">
+          <div id="g-e3" style="position:absolute; left:0; right:0; top:760px; display:flex; justify-content:center; opacity:0;">
+            <div style="width:1100px; padding:24px 50px; border:2px solid rgba(229,72,77,0.55); border-radius:16px; background:rgba(20,26,40,0.55); display:flex; justify-content:space-between; align-items:center;">
+              <div><span class="dim" style="font-size:34px; font-weight:700; margin-right:24px;">案例 3</span><span class="ink" style="font-size:52px; font-weight:900;">手机芯片技术</span></div>
+              <span class="red" style="font-size:44px; font-weight:900; padding:8px 28px; border:3px solid #E5484D; border-radius:10px;">直接诱捕</span>
+            </div>
+          </div>
+        </div>
+        <div class="clip" id="c-now" data-start="36.3" data-duration="9.4" data-track-index="4">
+          <div style="position:absolute; left:0; right:0; top:830px; display:flex; justify-content:center;">
+            <div id="now-card" style="padding:20px 54px; border-radius:14px; border:3px solid #E6B455; background:rgba(230,180,85,0.08); opacity:0;">
+              <span class="gold" style="font-size:52px; font-weight:900;">这次没有诱捕——只是媒体爆料</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#h-t", { opacity: 0, y: -22 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.2);
+        [["#g-e1", 6.2], ["#g-e2", 12.2], ["#g-e3", 20.2]].forEach(([sel, at]) => {
+          tl.fromTo(sel, { opacity: 0, x: -90 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, at);
+        });
+        tl.to("#g-e3", { x: 14, duration: 0.16, ease: "power1.in" }, 30.0);
+        tl.to("#g-e3", { x: -12, duration: 0.16, ease: "power1.inOut" }, 30.16);
+        tl.to("#g-e3", { x: 0, duration: 0.2, ease: "power1.out" }, 30.32);
+        tl.fromTo("#now-card", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.45, ease: "power4.out" }, 36.5);
+        window.__timelines["s3"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
