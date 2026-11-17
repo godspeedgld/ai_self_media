@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+        @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+        #root { position: absolute; inset: 0; }
+        .cap { position: absolute; left: 0; right: 0; bottom: 104px; display: flex; justify-content: center; font-family: "HFZh", "Noto Sans JP", sans-serif; overflow: visible; }
+        .ct { font-size: 54px; font-weight: 900; letter-spacing: 0.02em; white-space: nowrap; }
+        .sing .ct { color: #FF5FA2; text-shadow: 0 0 22px rgba(255,95,162,0.45), 0 2px 12px rgba(6,6,12,0.9); }
+        .tua .ct { color: #4FC3F7; text-shadow: 0 0 22px rgba(79,195,247,0.45), 0 2px 12px rgba(6,6,12,0.9); }
+      </style>
+      <div id="root" data-composition-id="caps" data-width="1920" data-height="1080" data-track-kind="captions">
+    <div id="cg0" class="clip cap sing" data-start="0.14" data-duration="9.80" data-track-index="0"><span class="ct">🎵 改编歌哦——想问天，你在哪里啊 🎵</span></div>
+    <div id="cg1" class="clip cap tua" data-start="9.94" data-duration="3.20" data-track-index="0"><span class="ct">呃…… 我在拉屎 💩</span></div>
+    <div id="cg2" class="clip cap sing" data-start="13.14" data-duration="5.28" data-track-index="0"><span class="ct">🎵 我想问问我自己 🎵</span></div>
+    <div id="cg3" class="clip cap tua" data-start="18.42" data-duration="2.52" data-track-index="0"><span class="ct">问呗</span></div>
+    <div id="cg4" class="clip cap sing" data-start="20.94" data-duration="9.51" data-track-index="0"><span class="ct">🎵 一开始我聪明，结束我聪明，聪明的几乎的毁掉了我自己 🎵</span></div>
+    <div id="cg5" class="clip cap tua" data-start="30.45" data-duration="2.69" data-track-index="0"><span class="ct">哦…… 这么惨</span></div>
+    <div id="cg6" class="clip cap sing" data-start="33.14" data-duration="8.10" data-track-index="0"><span class="ct">🎵 想问天，问大地 🎵</span></div>
+    <div id="cg7" class="clip cap tua" data-start="41.24" data-duration="3.70" data-track-index="0"><span class="ct">不用不用！我拉屎呢 💩 拉完了再说</span></div>
+    <div id="cg8" class="clip cap sing" data-start="44.94" data-duration="4.00" data-track-index="0"><span class="ct">🎵 或者是迷信，问问宿命啊 🎵</span></div>
+    <div id="cg9" class="clip cap tua" data-start="48.94" data-duration="4.20" data-track-index="0"><span class="ct">没救了</span></div>
+    <div id="cg10" class="clip cap sing" data-start="53.14" data-duration="8.34" data-track-index="0"><span class="ct">🎵 放下所有，抛下所有，让我漂流在安静的夜空里 🎵</span></div>
+    <div id="cg11" class="clip cap tua" data-start="61.48" data-duration="4.46" data-track-index="0"><span class="ct">哦，你也忒惨了点吧</span></div>
+    <div id="cg12" class="clip cap sing" data-start="65.94" data-duration="6.48" data-track-index="0"><span class="ct">🎵 你也不必牵强，再说爱我 🎵</span></div>
+    <div id="cg13" class="clip cap tua" data-start="72.42" data-duration="4.16" data-track-index="0"><span class="ct">我靠！别唱了别唱了 🚽 我拉完了就来找你</span></div>
+    <div id="cg14" class="clip cap sing" data-start="76.58" data-duration="8.45" data-track-index="0"><span class="ct">🎵 我从来没说过，我爱你 🎵</span></div>
+    <div id="cg15" class="clip cap sing" data-start="85.03" data-duration="3.21" data-track-index="0"><span class="ct">🎵 反正我的灵魂一片片掉落，慢慢的拼凑，拼凑成一个完全不属于真正的我 🎵</span></div>
+    <div id="cg16" class="clip cap tua" data-start="88.24" data-duration="6.21" data-track-index="0"><span class="ct">哎，我怎么感觉你像被片鱼片了呢 🐟</span></div>
+    <div id="cg17" class="clip cap sing" data-start="94.45" data-duration="5.51" data-track-index="0"><span class="ct">🎵 我不愿再放纵 🎵</span></div>
+    <div id="cg18" class="clip cap tua" data-start="99.96" data-duration="1.64" data-track-index="0"><span class="ct">对！早睡早起身体好 ✨</span></div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+  tl.fromTo("#cg0 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 0.14);
+  tl.fromTo("#cg1 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 9.94);
+  tl.fromTo("#cg2 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 13.14);
+  tl.fromTo("#cg3 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 18.42);
+  tl.fromTo("#cg4 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 20.94);
+  tl.fromTo("#cg5 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 30.45);
+  tl.fromTo("#cg6 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 33.14);
+  tl.fromTo("#cg7 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 41.24);
+  tl.fromTo("#cg8 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 44.94);
+  tl.fromTo("#cg9 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 48.94);
+  tl.fromTo("#cg10 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 53.14);
+  tl.fromTo("#cg11 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 61.48);
+  tl.fromTo("#cg12 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 65.94);
+  tl.fromTo("#cg13 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 72.42);
+  tl.fromTo("#cg14 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 76.58);
+  tl.fromTo("#cg15 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 85.03);
+  tl.fromTo("#cg16 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 88.24);
+  tl.fromTo("#cg17 .ct", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 94.45);
+  tl.fromTo("#cg18 .ct", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.18, ease: "power2.out" }, 99.96);
+        window.__timelines["caps"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

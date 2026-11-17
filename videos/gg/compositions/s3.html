@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head><meta charset="UTF-8" /></head>
+  <body>
+    <template>
+      <style>
+  @font-face { font-family: "HFZh"; src: local("Microsoft YaHei"), local("微软雅黑"); }
+  #root { position: absolute; inset: 0; font-family: "HFZh", "Noto Sans JP", sans-serif; background: #0F0E1E; }
+  .frame { position: absolute; inset: 26px; border: 1px solid rgba(138,143,163,0.22); pointer-events: none; }
+  .badge-l { position: absolute; left: 44px; top: 44px; padding: 10px 26px; border-radius: 999px; border: 2px solid rgba(255,95,162,0.6); color: #FF5FA2; font-size: 28px; font-weight: 900; }
+  .badge-r { position: absolute; right: 44px; top: 44px; padding: 10px 26px; border-radius: 999px; border: 2px solid rgba(79,195,247,0.6); color: #4FC3F7; font-size: 28px; font-weight: 900; }
+  .glow-p { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(255,95,162,0.06), transparent 65%); left: -200px; top: -240px; }
+  .glow-c { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(circle, rgba(79,195,247,0.06), transparent 65%); right: -300px; bottom: -340px; }
+  .ink { color: #F5F5F7; } .pink { color: #FF5FA2; } .cyan { color: #4FC3F7; } .dim { color: #8A8FA3; }
+  .lyric { padding: 30px 70px; border-radius: 22px; background: rgba(255,95,162,0.08); border: 3px solid rgba(255,95,162,0.65); box-shadow: 0 0 60px rgba(255,95,162,0.18); text-align: center; }
+  .bubble { position: relative; padding: 26px 54px; border-radius: 26px; background: rgba(79,195,247,0.1); border: 3px solid rgba(79,195,247,0.7); text-align: center; }
+  .lyric-t { color: #FF5FA2; font-size: 68px; font-weight: 900; line-height: 1.4; }
+  .bubble-t { color: #4FC3F7; font-size: 52px; font-weight: 900; line-height: 1.35; }
+</style>
+      <div id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+        <div class="frame" data-layout-ignore></div>
+        <div class="badge-l" data-layout-ignore>🎤 改编歌手</div>
+        <div class="badge-r" data-layout-ignore>🚽 陪同监工</div>
+
+        <div class="clip" id="s3-c1" data-start="0" data-duration="3.6" data-track-index="0">
+          <div id="s3-g1" style="position:absolute; right:220px; top:300px; opacity:0;">
+            <div class="bubble"><div class="bubble-t">没救了</div></div>
+          </div>
+        </div>
+        <div class="clip" id="s3-c2" data-start="4.0" data-duration="7.5" data-track-index="1">
+          <div id="s3-g2" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px; opacity:0;">
+            <div class="lyric"><div class="lyric-t">放下所有，抛下所有</div></div>
+            <div class="lyric" style="opacity:0.9;"><div class="lyric-t">让我漂流在安静的夜空里</div></div>
+          </div>
+        </div>
+        <div class="clip" id="s3-c3" data-start="12.4" data-duration="4.6" data-track-index="2">
+          <div id="s3-g3" style="position:absolute; right:150px; top:320px; opacity:0;">
+            <div class="bubble"><div class="bubble-t">你也忒惨了点吧</div></div>
+          </div>
+        </div>
+        <div class="clip" id="s3-c4" data-start="17.0" data-duration="5.5" data-track-index="3">
+          <div id="s3-g4" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0;">
+            <div class="lyric"><div class="lyric-t">你也不必牵强，再说爱我</div></div>
+          </div>
+        </div>
+        <div class="clip" id="s3-c5" data-start="23.4" data-duration="4.2" data-track-index="4">
+          <div id="s3-g5" style="position:absolute; left:0; right:0; top:300px; display:flex; justify-content:center; opacity:0;">
+            <div class="bubble" style="transform:scale(1.15);"><div class="bubble-t">我靠！别唱了别唱了 🚽<br/>我拉完了就来找你</div></div>
+          </div>
+        </div>
+        <div class="clip" id="s3-amb" data-start="0" data-duration="27.6" data-track-index="8" data-layout-ignore>
+          <div class="glow-p" id="s3-gp"></div>
+          <div class="glow-c" id="s3-gc"></div>
+        </div>
+      </div>
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        tl.fromTo("#s3-g1", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.0);
+        tl.fromTo("#s3-g2", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 4.0);
+        tl.fromTo("#s3-g3", { opacity: 0, x: 150 }, { opacity: 1, x: 0, duration: 0.4, ease: "back.out(1.5)" }, 12.4);
+        tl.fromTo("#s3-g4", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 17.0);
+        tl.fromTo("#s3-g5", { opacity: 0, y: 60, scale: 0.8 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 23.4);
+
+        tl.fromTo("#s3-gp", { x: 0, y: 0 }, { x: 110, y: 50, duration: 27.6, ease: "none" }, 0);
+        tl.fromTo("#s3-gc", { x: 0, y: 0 }, { x: -120, y: -60, duration: 27.6, ease: "none" }, 0);
+        window.__timelines["s3"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
